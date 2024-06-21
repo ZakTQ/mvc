@@ -1,0 +1,35 @@
+<?php
+/**
+ * принимает аргументы из консоли
+ */
+if (isset($argv[1])) {
+    start($argv);
+} else {
+    help();
+}
+/**
+ * поиск строки[1] в массиве argv
+ */
+function start(array $arg)
+{
+    switch (true) {
+        case $arg[1] == 'serve':
+            serve();
+            break;
+
+        default:
+            help();
+    }
+}
+
+function serve()
+{
+    system('php -S localhost:8000 public/index.php');
+}
+
+function help()
+{
+    print_r("serve - start localhost server\n");
+    die;
+}
+

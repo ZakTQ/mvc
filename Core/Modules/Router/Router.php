@@ -1,6 +1,7 @@
 <?php
 
 namespace Core\Modules\Router;
+use Core\Controller\AbstractController;
 
 class Router implements RouterInterface
 {
@@ -10,25 +11,43 @@ class Router implements RouterInterface
     public function __construct(string $routesFilePath)
     {
         $this->routes = require_once $routesFilePath;
+        $this->sortRoutes($this->routes);
     }
 
     public function match(string $method, string $uri)
     {
-        $this->sortRoutes($this->routes);
         $route = $this->sortRoutesArr[$method][$uri];
 
         //mydd($this->sortRoutesArr);
+        //mydd($route);
 
         if (!$route) {
             echo '404';
             exit;
         }
-        $route();
+
+        [$controller, $action] = $route->action();
+
+        /** @var AbstractController $controller */
+
+        $controller = new $controller();
+        call_user_func([$controller, $action]);
+        exit;
     }
 
-    public function addRoute(Route $route): void
+    private function findRoute()
     {
-        $this->sortRoutesArr[$route->method()][$route->uri()] = $route->action();
+        // array_search()
+    }
+
+    private function runRoute()
+    {
+
+    }
+
+    private function addRoute(Route $route): void
+    {
+        $this->sortRoutesArr[$route->method()][$route->uri()] = $route;
     }
 
     private function sortRoutes(array $arr): void

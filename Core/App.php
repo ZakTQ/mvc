@@ -16,8 +16,8 @@ class App
 
     public function run()
     {
-        $this->container->view->render('main');
-        die;
+        // $this->container->view->render('main');
+        // die;
         
         $this->container->router->match(
             $this->container->request->method(),

@@ -29,7 +29,7 @@ class Container
         $this->request = Request::setGlobals();
         $this->redirect = new Redirect();
         $this->view = new View(
-            APP_PATH . '/views//'
+            APP_PATH . '/resources/views//'
         );
         $this->router = new Router(
             $this->config->getConfig('routes')

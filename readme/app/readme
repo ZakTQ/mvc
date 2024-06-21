@@ -1,0 +1,26 @@
+> app
+    > controllers
+    > models
+> Core
+    > Container
+    > Controller
+    > Model
+    > Modules
+        > Auth
+        > Config
+        > DB
+        > File
+        > Http
+            > Redirect
+            > Request
+            > Response
+            > Session
+        > Middleware
+        > Router
+        > Storage
+        > Validator
+    > View
+    + App.php
+> public
+> resources
+> routes

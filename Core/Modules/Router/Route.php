@@ -14,9 +14,7 @@ class Route
 
     public static function get(string $uri, mixed $action): static
     {
-        $method = 'GET';
-
-        return new static($method, $uri, $action);
+        return new static('GET', $uri, $action);
     }
 
     public function method(): string

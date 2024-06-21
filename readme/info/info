@@ -1,0 +1,15 @@
+1>>
+    /public/index.php
+        запускает приложение
+        создает обьект App
+2>>
+    /Core/App.php
+        создает контейнер
+        запускает инициализацию сервисов контейнера
+        передает методу match обьекту Router два свойста uri и method
+            router->match(method,uri)
+3>>
+    /Core/Modules/Router
+        сортирует массив routes
+        выполняет match(string $method, string $uri)
+        
